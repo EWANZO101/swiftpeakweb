@@ -1,0 +1,13 @@
+/* External CSS file */
+/* Your existing styles */
+
+/* Additional dark mode styles */
+.dark-mode nav {
+    background-color: #111; /* Dark mode navigation background color */
+}
+
+.dark-mode .container {
+    background-color: #222; /* Dark mode container background color */
+}
+
+/* Other dark mode styles... */
