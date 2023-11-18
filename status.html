@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Status Page - SwiftPeakDevelopment</title>
@@ -9,85 +10,151 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #333; /* Dark background color */
+            background-color: #1a1a1a; /* Dark background color */
             color: #fff; /* White text color */
             transition: background-color 0.3s, color 0.3s;
             display: flex;
             flex-direction: column;
-            align-items: center;
+        }
+
+        /* Navigation styles */
+        nav {
+            background-color: #333; /* Darker navigation background color */
+            padding: 20px 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Shadow effect */
         }
 
         a {
             color: #fff;
             text-decoration: none;
-            margin: 10px;
-            padding: 8px 12px;
+            margin: 0 15px;
+            padding: 10px 20px;
             border-radius: 5px;
             transition: background-color 0.3s, color 0.3s;
+            background-color: #444; /* Darker color */
         }
 
         a:hover {
             background-color: #555; /* Darker color on hover */
         }
 
-        /* Other styles */
-        nav {
-            background-color: #222; /* Darker navigation background color */
-            padding: 10px;
-            margin-bottom: 20px;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-        }
-
+        /* Container styles */
         .container {
             max-width: 800px;
-            padding: 20px;
-            background-color: #444; /* Darker container background color */
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(255, 255, 255, 0.1); /* Adjust shadow color for dark mode */
+            padding: 40px;
+            background-color: #333; /* Darker container background color */
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adjust shadow */
             display: flex;
             flex-direction: column;
             align-items: center;
             text-align: center;
+            margin: 20px auto;
+            position: relative;
+        }
+
+        .container .content {
+            margin-bottom: 20px;
+        }
+
+        .container h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .container p {
+            font-size: 1.2em;
+            color: #ccc;
+            margin-bottom: 20px;
         }
 
         .status-site {
-            margin-top: 20px;
-            padding: 10px 20px;
+            padding: 15px 40px;
             cursor: pointer;
-            background-color: #007bff; /* Adjust button color for dark mode */
+            background-color: #007bff; /* Button color */
             color: #fff;
             border: none;
             border-radius: 5px;
             transition: background-color 0.3s, color 0.3s;
+            font-size: 1.2em;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Button shadow */
         }
 
         .status-site:hover {
-            background-color: #0056b3; /* Adjust button color on hover for dark mode */
+            background-color: #0056b3; /* Button color on hover */
+        }
+
+        /* Clock box styles */
+        .clock-box {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 10px 15px;
+            background-color: #444; /* Darker clock box background color */
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Shadow effect */
+        }
+
+        /* Iframe for status */
+        .status-iframe {
+            width: 300px;
+            height: 150px;
+            border: none;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Shadow effect */
         }
     </style>
 </head>
+
 <body>
+    <!-- Navigation bar -->
     <nav>
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
         <a href="services.html">Services</a>
         <a href="status.html">Status Page</a>
         <a href="login.html">Login</a>
-        <a href="signup.html">comingsoon</a>
+        <a href="signup.html">Coming Soon</a>
     </nav>
 
-    <div class="container">
-        <h1>Status Page</h1>
-        <p>Check our status...</p>
-        <button class="status-site" onclick="redirectToExternalPage()">Status Site</button>
-    </div>
+  
 
+    <!-- Clock box -->
+    <div class="clock-box">
+        <div id="clock" style="font-size: 1.5em;"></div>
+    </div>
+<!-- Embedded live status -->
+<iframe src="https://status.swiftpeekhosting.uk/" title="Live Status" width="100%" height="900" frameborder="0"></iframe>
+
+    <!-- Script for redirecting to an external status page and clock functionality -->
     <script>
         function redirectToExternalPage() {
             window.location.href = "https://status.swiftpeekhosting.uk/";
         }
+
+        function updateClock() {
+            const clock = document.getElementById('clock');
+            const options = {
+                timeZone: 'Europe/London',
+                hour: 'numeric',
+                minute: 'numeric',
+                second: 'numeric'
+            };
+            const formatter = new Intl.DateTimeFormat('en-GB', options);
+            const currentTime = formatter.format(new Date());
+            clock.textContent = `GMT/UK Time: ${currentTime}`;
+        }
+
+        // Update the clock every second
+        setInterval(updateClock, 1000);
+
+        // Initial call to set the clock immediately
+        updateClock();
     </script>
 </body>
+
 </html>

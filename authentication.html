@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Authentication</title>
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+
+    form {
+      max-width: 400px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+      font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="password"],
+    button[type="submit"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      box-sizing: border-box;
+    }
+
+    .g-recaptcha {
+      margin-bottom: 20px;
+    }
+
+    button[type="submit"] {
+      background-color: #4caf50;
+      color: white;
+      cursor: pointer;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <h1>Welcome to the Authentication Page</h1>
+  <form id="authForm" action="process.php" method="post">
+    <label for="username">Username:</label><br>
+    <input type="text" id="username" name="username" required><br><br>
+    
+    <label for="password">Password:</label><br>
+    <input type="password" id="password" name="password" required><br><br>
+    
+    <div class="g-recaptcha" data-sitekey="0x4AAAAAAANTaKy-EXqCxm5G"></div><br><br>
+    
+    <button type="submit">Submit</button>
+  </form>
+</body>
+</html>
