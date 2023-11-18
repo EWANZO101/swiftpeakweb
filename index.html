@@ -354,6 +354,41 @@
   <script src="js/custom.js"></script>
 
 
+
+  <!DOCTYPE html>
+  <html>
+  <head>
+      <title>Embedded YouTube Video</title>
+  </head>
+  <body>
+  
+ 
+  
+    <!-- Script for redirecting to an external status page and clock functionality -->
+    <script>
+      function redirectToExternalPage() {
+          window.location.href = "https://status.swiftpeekhosting.uk/";
+      }
+
+      function updateClock() {
+          const clock = document.getElementById('clock');
+          const options = {
+              timeZone: 'Europe/London',
+              hour: 'numeric',
+              minute: 'numeric',
+              second: 'numeric'
+          };
+          const formatter = new Intl.DateTimeFormat('en-GB', options);
+          const currentTime = formatter.format(new Date());
+          clock.textContent = `GMT/UK Time: ${currentTime}`;
+      }
+
+      // Update the clock every second
+      setInterval(updateClock, 1000);
+
+      // Initial call to set the clock immediately
+      updateClock();
+  </script>
 </body>
 
 </html>
